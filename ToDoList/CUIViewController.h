@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  CUIViewController.h
 //  ToDoList
 //
 //  Created by Andres on 1/16/16.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface CUIViewController : UIViewController
 
 @end
-

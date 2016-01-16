@@ -10,11 +10,15 @@
 		410BA95A1C4A798600C64DBB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 410BA9591C4A798600C64DBB /* main.m */; };
 		410BA95D1C4A798600C64DBB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 410BA95C1C4A798600C64DBB /* AppDelegate.m */; };
 		410BA9601C4A798600C64DBB /* ToDoList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 410BA95E1C4A798600C64DBB /* ToDoList.xcdatamodeld */; };
-		410BA9631C4A798600C64DBB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 410BA9621C4A798600C64DBB /* ViewController.m */; };
 		410BA9661C4A798600C64DBB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 410BA9641C4A798600C64DBB /* Main.storyboard */; };
 		410BA9681C4A798600C64DBB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 410BA9671C4A798600C64DBB /* Images.xcassets */; };
 		410BA96B1C4A798600C64DBB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 410BA9691C4A798600C64DBB /* LaunchScreen.xib */; };
 		410BA9771C4A798700C64DBB /* ToDoListTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 410BA9761C4A798700C64DBB /* ToDoListTests.m */; };
+		410BA9881C4A7FE000C64DBB /* CUITableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 410BA9871C4A7FE000C64DBB /* CUITableViewController.m */; };
+		410BA98B1C4A802000C64DBB /* CUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 410BA98A1C4A802000C64DBB /* CUIViewController.m */; };
+		410BA98E1C4A806700C64DBB /* CUINavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 410BA98D1C4A806700C64DBB /* CUINavigationController.m */; };
+		410BA9931C4A898200C64DBB /* ToDoEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 410BA9921C4A898200C64DBB /* ToDoEntity.m */; };
+		410BA9961C4A8A8800C64DBB /* CUITableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 410BA9951C4A8A8800C64DBB /* CUITableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,14 +38,24 @@
 		410BA95B1C4A798600C64DBB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		410BA95C1C4A798600C64DBB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		410BA95F1C4A798600C64DBB /* ToDoList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ToDoList.xcdatamodel; sourceTree = "<group>"; };
-		410BA9611C4A798600C64DBB /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		410BA9621C4A798600C64DBB /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		410BA9651C4A798600C64DBB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		410BA9671C4A798600C64DBB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		410BA96A1C4A798600C64DBB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		410BA9701C4A798700C64DBB /* ToDoListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToDoListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		410BA9751C4A798700C64DBB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		410BA9761C4A798700C64DBB /* ToDoListTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ToDoListTests.m; sourceTree = "<group>"; };
+		410BA9861C4A7FE000C64DBB /* CUITableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUITableViewController.h; sourceTree = "<group>"; };
+		410BA9871C4A7FE000C64DBB /* CUITableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUITableViewController.m; sourceTree = "<group>"; };
+		410BA9891C4A802000C64DBB /* CUIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUIViewController.h; sourceTree = "<group>"; };
+		410BA98A1C4A802000C64DBB /* CUIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUIViewController.m; sourceTree = "<group>"; };
+		410BA98C1C4A806700C64DBB /* CUINavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUINavigationController.h; sourceTree = "<group>"; };
+		410BA98D1C4A806700C64DBB /* CUINavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUINavigationController.m; sourceTree = "<group>"; };
+		410BA98F1C4A81F900C64DBB /* CHandleMOC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHandleMOC.h; sourceTree = "<group>"; };
+		410BA9901C4A839800C64DBB /* CHandleToDoEntitty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHandleToDoEntitty.h; sourceTree = "<group>"; };
+		410BA9911C4A898200C64DBB /* ToDoEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToDoEntity.h; sourceTree = "<group>"; };
+		410BA9921C4A898200C64DBB /* ToDoEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDoEntity.m; sourceTree = "<group>"; };
+		410BA9941C4A8A8800C64DBB /* CUITableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUITableViewCell.h; sourceTree = "<group>"; };
+		410BA9951C4A8A8800C64DBB /* CUITableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUITableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,12 +99,22 @@
 			children = (
 				410BA95B1C4A798600C64DBB /* AppDelegate.h */,
 				410BA95C1C4A798600C64DBB /* AppDelegate.m */,
-				410BA9611C4A798600C64DBB /* ViewController.h */,
-				410BA9621C4A798600C64DBB /* ViewController.m */,
 				410BA9641C4A798600C64DBB /* Main.storyboard */,
+				410BA98F1C4A81F900C64DBB /* CHandleMOC.h */,
+				410BA9901C4A839800C64DBB /* CHandleToDoEntitty.h */,
+				410BA98C1C4A806700C64DBB /* CUINavigationController.h */,
+				410BA98D1C4A806700C64DBB /* CUINavigationController.m */,
+				410BA9861C4A7FE000C64DBB /* CUITableViewController.h */,
+				410BA9871C4A7FE000C64DBB /* CUITableViewController.m */,
+				410BA9941C4A8A8800C64DBB /* CUITableViewCell.h */,
+				410BA9951C4A8A8800C64DBB /* CUITableViewCell.m */,
+				410BA9891C4A802000C64DBB /* CUIViewController.h */,
+				410BA98A1C4A802000C64DBB /* CUIViewController.m */,
 				410BA9671C4A798600C64DBB /* Images.xcassets */,
 				410BA9691C4A798600C64DBB /* LaunchScreen.xib */,
 				410BA95E1C4A798600C64DBB /* ToDoList.xcdatamodeld */,
+				410BA9911C4A898200C64DBB /* ToDoEntity.h */,
+				410BA9921C4A898200C64DBB /* ToDoEntity.m */,
 				410BA9571C4A798600C64DBB /* Supporting Files */,
 			);
 			path = ToDoList;
@@ -223,9 +247,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				410BA95D1C4A798600C64DBB /* AppDelegate.m in Sources */,
+				410BA9961C4A8A8800C64DBB /* CUITableViewCell.m in Sources */,
+				410BA98B1C4A802000C64DBB /* CUIViewController.m in Sources */,
 				410BA9601C4A798600C64DBB /* ToDoList.xcdatamodeld in Sources */,
-				410BA9631C4A798600C64DBB /* ViewController.m in Sources */,
 				410BA95A1C4A798600C64DBB /* main.m in Sources */,
+				410BA9931C4A898200C64DBB /* ToDoEntity.m in Sources */,
+				410BA9881C4A7FE000C64DBB /* CUITableViewController.m in Sources */,
+				410BA98E1C4A806700C64DBB /* CUINavigationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
