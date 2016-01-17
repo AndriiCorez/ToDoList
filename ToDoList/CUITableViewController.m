@@ -6,11 +6,15 @@
 //  Copyright (c) 2016 Andres. All rights reserved.
 //
 
+#import <CoreData/CoreData.h>
 #import "CUITableViewController.h"
+#import "CUITableViewCell.h"
+#import "ToDoEntity.h"
 
-@interface CUITableViewController ()
+@interface CUITableViewController () <UITableViewDataSource,UITableViewDelegate,NSFetchedResultsControllerDelegate>
 
 @property (strong,nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) NSFetchedResultsController *resultsController;
 
 @end
 
@@ -18,12 +22,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self initializeNSFetchedResultsControllerDelegate];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -35,29 +35,77 @@
     self.managedObjectContext = incomingMOC;
 }
 
-#pragma mark - Table view data source
+#pragma mark - NSFetchedResultsControllerDelegate
+
+- (void)initializeNSFetchedResultsControllerDelegate{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    fetchRequest.entity = [NSEntityDescription entityForName:@"ToDoEntity" inManagedObjectContext:self.managedObjectContext];
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"TRUEPREDICATE"];
+    fetchRequest.sortDescriptors = @[[[NSSortDescriptor alloc] initWithKey:@"dueDate" ascending:YES]];
+    
+    self.resultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+    self.resultsController.delegate = self;
+    
+    NSError *error;
+    BOOL fetchSucceed = [self.resultsController performFetch:&error];
+    if (!fetchSucceed) {
+        @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:@"couldn't fetch" userInfo:nil];
+    }
+}
+
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller{
+    [self.tableView beginUpdates];
+}
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller{
+    [self.tableView endUpdates];
+}
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath{
+    
+    switch (type) {
+        case NSFetchedResultsChangeInsert:
+            [[self tableView] insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+        case NSFetchedResultsChangeUpdate:{
+            CUITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+            ToDoEntity *entityItem = [controller objectAtIndexPath:indexPath];
+            [cell setInternalFields:entityItem];
+            break;
+        }
+        case NSFetchedResultsChangeDelete:
+            [[self tableView] deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+        case NSFetchedResultsChangeMove:
+            [[self tableView] deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [[self tableView] insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+    
+    }
+    
+}
+
+#pragma mark - Table view data source / delegates
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    id<NSFetchedResultsSectionInfo> sectionInfo = [self.resultsController sections][section];
+    return [sectionInfo numberOfObjects]; //NOT the same as in Xcode7
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
     
-    // Configure the cell...
+    ToDoEntity *entityItem = [self.resultsController.sections[indexPath.section] objectAtIndex:indexPath.row];
+    CUITableViewCell *cell = (CUITableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"TableCellIdentifier" forIndexPath:indexPath];
     
+    [cell setInternalFields:entityItem];
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.
