@@ -10,6 +10,16 @@
 
 @implementation CUITableViewCell
 
+- (void)setInternalFields:(ToDoEntity*)incomingToDoEntity{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateStyle:NSDateFormatterShortStyle];
+    [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+    
+    self.toDoTitle.text = incomingToDoEntity.title;
+    self.toDoDate.text = [dateFormatter stringFromDate:incomingToDoEntity.dueDate];
+    self.toDoEntity = incomingToDoEntity;
+}
+
 - (void)awakeFromNib {
     // Initialization code
 }

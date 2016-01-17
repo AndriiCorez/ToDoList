@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ToDoEntity.h"
 
 @interface CUITableViewCell : UITableViewCell
+
+@property (strong, nonatomic) ToDoEntity *toDoEntity;
+@property (weak, nonatomic) IBOutlet UILabel *toDoTitle;
+@property (weak, nonatomic) IBOutlet UILabel *toDoDate;
+
+- (void)setInternalFields:(ToDoEntity*)incomingToDoEntity;
 
 @end
