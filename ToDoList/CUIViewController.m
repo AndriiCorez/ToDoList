@@ -10,6 +10,8 @@
 
 @interface CUIViewController ()
 
+@property (strong,nonatomic) NSManagedObjectContext *managedObjectContext;
+
 @end
 
 @implementation CUIViewController
@@ -24,6 +26,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)receiveMOC:(NSManagedObjectContext *)incomingMOC{
+    self.managedObjectContext = incomingMOC;
+}
 /*
 #pragma mark - Navigation
 

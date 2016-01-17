@@ -10,6 +10,8 @@
 
 @interface CUINavigationController ()
 
+@property (strong,nonatomic) NSManagedObjectContext *managedObjectContext;
+
 @end
 
 @implementation CUINavigationController
@@ -23,6 +25,13 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)receiveMOC:(NSManagedObjectContext *)incomingMOC{
+    self.managedObjectContext = incomingMOC;
+    id<CHandleMOC> handleMOC = (id<CHandleMOC>)self.viewControllers[0];
+    [handleMOC receiveMOC:self.managedObjectContext];
+}
+
 
 /*
 #pragma mark - Navigation

@@ -10,6 +10,8 @@
 
 @interface CUITableViewController ()
 
+@property (strong,nonatomic) NSManagedObjectContext *managedObjectContext;
+
 @end
 
 @implementation CUITableViewController
@@ -27,6 +29,10 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)receiveMOC:(NSManagedObjectContext *)incomingMOC{
+    self.managedObjectContext = incomingMOC;
 }
 
 #pragma mark - Table view data source
@@ -87,14 +93,15 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
+    id<CHandleMOC> handleMOC = (id<CHandleMOC>)[segue destinationViewController];
+    [handleMOC receiveMOC:self.managedObjectContext];
     // Pass the selected object to the new view controller.
 }
-*/
+
 
 @end

@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CHandleMOC.h"
 
-@interface CUIViewController : UIViewController
+@interface CUIViewController : UIViewController <CHandleMOC>
+
+- (void)receiveMOC:(NSManagedObjectContext *)incomingMOC;
 
 @end

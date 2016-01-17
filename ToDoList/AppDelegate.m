@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "CHandleMOC.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +17,9 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    id<CHandleMOC> handleMOC = (id<CHandleMOC>)self.window.rootViewController;
+    [handleMOC receiveMOC:self.managedObjectContext];
+    
     return YES;
 }
 
