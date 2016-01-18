@@ -10,6 +10,8 @@
 #import "CUITableViewController.h"
 #import "CUITableViewCell.h"
 #import "ToDoEntity.h"
+#import "CHandleMOC.h"
+#import "CHandleToDoEntitty.h"
 
 @interface CUITableViewController () <UITableViewDataSource,UITableViewDelegate,NSFetchedResultsControllerDelegate>
 
@@ -68,7 +70,7 @@
             [[self tableView] insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
             break;
         case NSFetchedResultsChangeUpdate:{
-            CUITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+            CUITableViewCell *cell = (CUITableViewCell*)[self.tableView cellForRowAtIndexPath:indexPath];
             ToDoEntity *entityItem = [controller objectAtIndexPath:indexPath];
             [cell setInternalFields:entityItem];
             break;
@@ -146,9 +148,11 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    id<CHandleMOC> handleMOC = (id<CHandleMOC>)[segue destinationViewController];
-    [handleMOC receiveMOC:self.managedObjectContext];
-    // Pass the selected object to the new view controller.
+    id<CHandleToDoEntitty, CHandleMOC> cHandler = (id<CHandleToDoEntitty, CHandleMOC>)[segue destinationViewController];
+    [cHandler receiveMOC:self.managedObjectContext];
+    
+    ToDoEntity *entityItem = [NSEntityDescription insertNewObjectForEntityForName:@"ToDoEntity" inManagedObjectContext:self.managedObjectContext];
+    [cHandler receiveToDoEntity:entityItem];
 }
 
 

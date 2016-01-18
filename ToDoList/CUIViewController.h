@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "CHandleMOC.h"
+#import "CHandleToDoEntitty.h"
 
-@interface CUIViewController : UIViewController <CHandleMOC>
+@interface CUIViewController : UIViewController <CHandleMOC, CHandleToDoEntitty>
 
 - (void)receiveMOC:(NSManagedObjectContext *)incomingMOC;
+- (void)receiveToDoEntity: (ToDoEntity *)incomingToDoEntity;
 
 @end

@@ -88,11 +88,6 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Axy-z3-UUq">
-                                <rect key="frame" x="16" y="110" width="568" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IXH-d4-bfV">
                                 <rect key="frame" x="16" y="195" width="568" height="133"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -118,6 +113,9 @@
                                 <date key="date" timeIntervalSinceReferenceDate="474722776.01061702">
                                     <!--2016-01-17 11:26:16 +0000-->
                                 </date>
+                                <connections>
+                                    <action selector="dueDateEdited:" destination="SmZ-gt-yAI" eventType="editingDidEnd" id="V45-EF-j6V"/>
+                                </connections>
                             </datePicker>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Details" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bzG-eS-cXp">
                                 <rect key="frame" x="16" y="160" width="78" height="27"/>
@@ -129,6 +127,14 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Axy-z3-UUq">
+                                <rect key="frame" x="16" y="110" width="568" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="titleFieldEdited:" destination="SmZ-gt-yAI" eventType="editingDidEnd" id="klh-6Q-Qt3"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.88179739006685265" green="0.88540251358695654" blue="0.85015126500727889" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -150,6 +156,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="To Do" id="jId-fA-WcR"/>
+                    <connections>
+                        <outlet property="datePicker" destination="Wpg-LF-w2D" id="fl4-VY-SXy"/>
+                        <outlet property="descriptionField" destination="IXH-d4-bfV" id="eps-Nc-q30"/>
+                        <outlet property="titleField" destination="Axy-z3-UUq" id="vLG-uw-Pij"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DGy-KU-ZCf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
